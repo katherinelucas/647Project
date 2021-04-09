@@ -20,17 +20,18 @@ if ($mysqli->connect_errno)
   {
     $query = "SELECT user_id FROM Users WHERE user_id='$username'";
     $result = mysqli_query($mysqli,$query);
+    $query2 = "SELECT password FROM Users WHERE password='$password'";
+    $result2 = mysqli_query($mysqli,$query2);
+    $query3 = "SELECT petid FROM Aniamls WHERE petid='$petid'";
+    $result3 = mysqli_query($mysqli,$query3);
 
-    if($result->num_rows == 0)
+    if($result->num_rows == 0 || $result2->num_rows == 0)
     {
-      echo "Invalid username, try again</br>";
+      echo "Invalid username or password, try again</br>";
     }
-    
-    $query = "SELECT password FROM Users WHERE password='$password'";
-    $result = mysqli_query($mysqli,$query);
-    if($result->num_rows == 0)
+    else if($result3->num_rows == 0 )
     {
-      echo "Invalid password, try again</br>";
+      echo "Invalid animal id, try again</br>";
     }
     else
     {
