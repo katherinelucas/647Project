@@ -9,7 +9,6 @@ if ($mysqli->connect_errno)
  printf("Connect failed: %s\n", $mysqli->connect_error);
  exit();
 }
-$username = $_POST["username"];
 $result = mysqli_query($mysqli,"SELECT * FROM Animals");
 
 echo '<table border=\"1\">';
