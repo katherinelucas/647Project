@@ -1,7 +1,7 @@
 <?php
 error_reporting(E_ALL);
 ini_set("display_errors", 1);
-$mysqli = new mysqli("mysql.eecs.ku.edu", "katielucas", "Pairaiy9",
+$mysqli = new mysqli("mysql.eecs.ku.edu", "katielucas", "oghe7yoL",
 "katielucas");
 /* check connection */
 if ($mysqli->connect_errno)
