@@ -18,7 +18,7 @@ if ($mysqli->connect_errno)
   }
   else
   {
-    $query = "SELECT user_id FROM Users WHERE user_id='$username'";
+    $query = "SELECT username FROM User WHERE username='$username'";
     $result = mysqli_query($mysqli,$query);
 
     if($result->num_rows != 0)
@@ -27,7 +27,7 @@ if ($mysqli->connect_errno)
     }
     else
     {
-      $sql = "INSERT INTO Users (user_id) VALUES ('$username')";
+      $sql = "INSERT INTO User (usename) VALUES ('$username')";
       $result = mysqli_query($mysqli,$sql);
       echo "Saved</br>";
       $sql = "INSERT INTO Users (password) VALUES ('$password')";
@@ -35,7 +35,7 @@ if ($mysqli->connect_errno)
       echo "Saved</br>";
     }
   }
-  $query = "SELECT user_id";
+  $query = "SELECT username";
   if ($result = $mysqli->query($query))
   {
    /* fetch associative array */
