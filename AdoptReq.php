@@ -18,7 +18,7 @@ if ($mysqli->connect_errno)
   }
   else
   {
-    $query = "SELECT username FROM User WHERE user_id='$username'";
+    $query = "SELECT username FROM User WHERE username='$username'";
     $result = mysqli_query($mysqli,$query);
     $query2 = "SELECT password FROM User WHERE password='$password'";
     $result2 = mysqli_query($mysqli,$query2);
@@ -43,13 +43,13 @@ if ($mysqli->connect_errno)
       echo "Saved</br>";
     }
   }
-  $query = "SELECT user_id";
+  $query = "SELECT username";
   if ($result = $mysqli->query($query))
   {
    /* fetch associative array */
    while ($row = $result->fetch_assoc())
    {
-     printf ("%s (%s)\n", $row["user_id"]);
+     printf ("%s (%s)\n", $row["username"]);
    }
    /* free result set */
    $result->free();
