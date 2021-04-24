@@ -18,11 +18,11 @@ if ($mysqli->connect_errno)
   }
   else
   {
-    $query = "SELECT user_id FROM Users WHERE user_id='$username'";
+    $query = "SELECT username FROM User WHERE user_id='$username'";
     $result = mysqli_query($mysqli,$query);
-    $query2 = "SELECT password FROM Users WHERE password='$password'";
+    $query2 = "SELECT password FROM User WHERE password='$password'";
     $result2 = mysqli_query($mysqli,$query2);
-    $query3 = "SELECT petid FROM Aniamls WHERE petid='$petid'";
+    $query3 = "SELECT petid FROM Animals WHERE petid='$petid'";
     $result3 = mysqli_query($mysqli,$query3);
 
     if($result->num_rows == 0 || $result2->num_rows == 0)
@@ -35,10 +35,10 @@ if ($mysqli->connect_errno)
     }
     else
     {
-      $sql = "INSERT INTO Adopt (user_id) VALUES ('$username')";
+      $sql = "INSERT INTO AdoptionRequests (username) VALUES ('$username')";
       $result = mysqli_query($mysqli,$sql);
       echo "Saved</br>";
-      $sql = "INSERT INTO Adopt (petid) VALUES ('$petid')";
+      $sql = "INSERT INTO AdoptionRequests (petid) VALUES ('$petid')";
       $result = mysqli_query($mysqli,$sql);
       echo "Saved</br>";
     }
