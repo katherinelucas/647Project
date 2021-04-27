@@ -10,15 +10,56 @@ if ($mysqli->connect_errno)
  exit();
 }
 $result = mysqli_query($mysqli,"SELECT * FROM Animals");
+$answer1 = $_POST["question-1-ans"];
 
 echo '<table border=\"1\">';
-while($row = mysqli_fetch_array($result))
+if($answer1 == "C")
 {
-    echo "<tr>";
-    echo "<td>".$row['content']."</td>";
-    echo "</tr>";
+	$result = mysqli_query($mysqli,"SELECT * FROM Animals");
+	while($row = mysqli_fetch_array($result))
+	{
+    	echo "<tr>";
+    	echo "<td>".$row['id']."</td>";
+    	echo "<td>".$row['name']."</td>";
+    	echo "<td>".$row['cost']."</td>";
+    	echo "<td>".$row['age']."</td>";
+    	echo "<td>".$row['species']."</td>";
+    	echo "</tr>";
+	}
+	echo '</table>';
 }
-echo '</table>';
+else if($answer1 == "B")
+{
+	$result = mysqli_query($mysqli,"SELECT * FROM Animals WHERE species='dog'");
+	while($row = mysqli_fetch_array($result))
+	{
+    	echo "<tr>";
+    	echo "<td>".$row['id']."</td>";
+    	echo "<td>".$row['name']."</td>";
+    	echo "<td>".$row['cost']."</td>";
+    	echo "<td>".$row['age']."</td>";
+    	echo "<td>".$row['species']."</td>";
+    	echo "</tr>";
+	}
+	echo '</table>';
+}
+else if($answer1 == "A")
+{
+	$result = mysqli_query($mysqli,"SELECT * FROM Animals WHERE species='cat'");
+	while($row = mysqli_fetch_array($result))
+	{
+    	echo "<tr>";
+    	echo "<td>".$row['id']."</td>";
+    	echo "<td>".$row['name']."</td>";
+    	echo "<td>".$row['cost']."</td>";
+    	echo "<td>".$row['age']."</td>";
+    	echo "<td>".$row['species']."</td>";
+    	echo "</tr>";
+	}
+	echo '</table>';
+}
+
+
 
  /* free result set */
  $result->free();
