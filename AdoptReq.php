@@ -12,7 +12,7 @@ if ($mysqli->connect_errno)
 }
   $username = $_POST["username"];
   $password = $_POST["password"];
-  $petid = $_POST["petid"];
+  $id = $_POST["id"];
 
   if($username=="")
   {
@@ -24,7 +24,7 @@ if ($mysqli->connect_errno)
     $result = mysqli_query($mysqli,$query);
     $query2 = "SELECT password FROM User WHERE password='$password'";
     $result2 = mysqli_query($mysqli,$query2);
-    $query3 = "SELECT petid FROM Animals WHERE petid='$petid'";
+    $query3 = "SELECT id FROM Animals WHERE id='$id'";
     $result3 = mysqli_query($mysqli,$query3);
 
     if($result->num_rows == 0 || $result2->num_rows == 0)
@@ -37,10 +37,7 @@ if ($mysqli->connect_errno)
     }
     else
     {
-      $sql = "INSERT INTO AdoptionRequests (username) VALUES ('$username')";
-      $result = mysqli_query($mysqli,$sql);
-      echo "Saved</br>";
-      $sql = "INSERT INTO AdoptionRequests (petid) VALUES ('$petid')";
+      $sql = "INSERT INTO AdoptionRequests (username, id) VALUES ('$username', '$id')";
       $result = mysqli_query($mysqli,$sql);
       echo "Saved</br>";
     }
