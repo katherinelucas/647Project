@@ -28,12 +28,10 @@ if ($mysqli->connect_errno)
     }
     else
     {
-      $sql = "INSERT INTO User (usename) VALUES ('$username')";
+      $sql = "INSERT INTO User (username, password) VALUES ('$username', '$password')";
       $result = mysqli_query($mysqli,$sql);
       echo "Saved</br>";
-      $sql = "INSERT INTO User (password) VALUES ('$password')";
-      $result = mysqli_query($mysqli,$sql);
-      echo "Saved</br>";
+     
     }
   }
   $query = "SELECT username";
