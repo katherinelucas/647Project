@@ -11,6 +11,7 @@ if ($mysqli->connect_errno)
  exit();
 }
   $username = $_POST["username"];
+  $password = $_POST["password"];
 
   if($username=="")
   {
@@ -30,7 +31,7 @@ if ($mysqli->connect_errno)
       $sql = "INSERT INTO User (usename) VALUES ('$username')";
       $result = mysqli_query($mysqli,$sql);
       echo "Saved</br>";
-      $sql = "INSERT INTO Users (password) VALUES ('$password')";
+      $sql = "INSERT INTO User (password) VALUES ('$password')";
       $result = mysqli_query($mysqli,$sql);
       echo "Saved</br>";
     }
