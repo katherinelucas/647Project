@@ -11,6 +11,8 @@ if ($mysqli->connect_errno)
  exit();
 }
   $username = $_POST["username"];
+  $password = $_POST["password"];
+  $petid = $_POST["petid"];
 
   if($username=="")
   {
