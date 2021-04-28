@@ -18,18 +18,20 @@ if ($mysqli->connect_errno)
   {
     echo"Your username is blank, try again.</br>";
   }
+  else if($password=="")
+  {
+    echo"Your password is blank, try again.</br>";
+  }
   else
   {
-    $query = "SELECT username FROM User WHERE username='$username'";
+    $query = "SELECT username, password FROM User WHERE username='$username' AND password='$password'";
     $result = mysqli_query($mysqli,$query);
-    $query2 = "SELECT password FROM User WHERE password='$password'";
-    $result2 = mysqli_query($mysqli,$query2);
     $query3 = "SELECT id FROM Animals WHERE id='$id'";
     $result3 = mysqli_query($mysqli,$query3);
     $query7 = "SELECT username FROM AdoptionRequest WHERE id='$id' AND username='$username'";
     $result7 = mysqli_query($mysqli,$query7);
 
-    if($result->num_rows == 0 || $result2->num_rows == 0)
+    if($result->num_rows == 0)
     {
       echo "Invalid username or password, try again</br>";
     }
