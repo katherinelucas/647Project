@@ -39,15 +39,40 @@ if ($mysqli->connect_errno)
     {
       $sql = "INSERT INTO AdoptionRequests (username, id) VALUES ('$username', '$id')";
       echo "<p>$username has requested to adopt animal with the id $id</p>";
+
       echo "<p>Information of animal requested:</p>";
-      $query5 = "SELECT * FROM Animal WHERE id='$id'";
-      $result5 = mysqli_query($mysqli,$query5);
-      $query6 = "SELECT id FROM AnimalRequests WHERE username='$username'";
-      $result6 = mysqli_query($mysqli,$query5);
+      $result5 = mysqli_query($mysqli, "SELECT * FROM Animals WHERE id='$id'");
+      echo '<table border=\"1\">';
+      echo"<td>id</td>";
+      echo"<td>name</td>";
+      echo"<td>cost</td>";
+      echo"<td>age</td>";
+      echo"<td>species</td>";
+      while($row = mysqli_fetch_array($result5))
+      {
+    	echo "<tr>";
+    	echo "<td>".$row['id']."</td>";
+        echo "<td>".$row['name']."</td>";
+        echo "<td>".$row['cost']."</td>";
+        echo "<td>".$row['age']."</td>";
+        echo "<td>".$row['species']."</td>";
+    	echo "</tr>";
+      }
+      echo '</table>';
+
+
       echo "<p>Ids of all animals requested by this user:</p>";
+      $result6 = mysqli_query($mysqli, "SELECT id FROM AdoptionRequests WHERE username='$username'");
+      echo '<table border=\"1\">';
+      while($row = mysqli_fetch_array($result6))
+      {
+    	echo "<tr>";
+    	echo "<td>".$row['id']."</td>";
+    	echo "</tr>";
+      }
+      echo '</table>';
 
       $result = mysqli_query($mysqli,$sql);
-      echo "Saved</br>";
     }
   }
   $query = "SELECT username";
