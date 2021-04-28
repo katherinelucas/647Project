@@ -17,6 +17,11 @@ if ($mysqli->connect_errno)
   {
     echo"Your username is blank, try again.</br>";
   }
+  else if($password=="")
+  {
+    echo"Your password is blank, try again.</br>";
+  }
+
   else
   {
     $query = "SELECT username FROM User WHERE username='$username'";
