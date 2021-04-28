@@ -11,11 +11,16 @@ if ($mysqli->connect_errno)
 }
 $result = mysqli_query($mysqli,"SELECT * FROM Animals");
 $answer1 = $_POST["question-1-ans"];
-
 echo '<table border=\"1\">';
 if($answer1 == "C")
 {
 	$result = mysqli_query($mysqli,"SELECT * FROM Animals");
+      echo '<table border=\"1\">';
+      echo"<td>id</td>";
+      echo"<td>name</td>";
+      echo"<td>cost</td>";
+      echo"<td>age</td>";
+      echo"<td>species</td>";
 	while($row = mysqli_fetch_array($result))
 	{
     	echo "<tr>";
@@ -31,6 +36,12 @@ if($answer1 == "C")
 else if($answer1 == "B")
 {
 	$result = mysqli_query($mysqli,"SELECT * FROM Animals WHERE species='dog'");
+      echo '<table border=\"1\">';
+      echo"<td>id</td>";
+      echo"<td>name</td>";
+      echo"<td>cost</td>";
+      echo"<td>age</td>";
+      echo"<td>species</td>";
 	while($row = mysqli_fetch_array($result))
 	{
     	echo "<tr>";
@@ -46,6 +57,12 @@ else if($answer1 == "B")
 else if($answer1 == "A")
 {
 	$result = mysqli_query($mysqli,"SELECT * FROM Animals WHERE species='cat'");
+      echo '<table border=\"1\">';
+      echo"<td>id</td>";
+      echo"<td>name</td>";
+      echo"<td>cost</td>";
+      echo"<td>age</td>";
+      echo"<td>species</td>";
 	while($row = mysqli_fetch_array($result))
 	{
     	echo "<tr>";
@@ -59,11 +76,17 @@ else if($answer1 == "A")
 	echo '</table>';
 }
 
-
-
- /* free result set */
- $result->free();
-}
-/* close connection */
-$mysqli->close();
-?>
+$query = "SELECT username";
+  if ($result = $mysqli->query($query))
+  {
+   /* fetch associative array */
+   while ($row = $result->fetch_assoc())
+   {
+     printf ("%s (%s)\n", $row["username"]);
+   }
+   /* free result set */
+   $result->free();
+  }
+  /* close connection */
+  $mysqli->close();
+  ?>
