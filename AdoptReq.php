@@ -38,6 +38,14 @@ if ($mysqli->connect_errno)
     else
     {
       $sql = "INSERT INTO AdoptionRequests (username, id) VALUES ('$username', '$id')";
+      echo "<p>$username has requested to adopt animal with the id $id</p>";
+      echo "<p>Information of animal requested:</p>";
+      $query5 = "SELECT name, species FROM Animal WHERE id='$id'";
+      $result5 = mysqli_query($mysqli,$query5);
+      $query6 = "SELECT id FROM AnimalRequests WHERE username='$username'";
+      $result6 = mysqli_query($mysqli,$query5);
+      echo "<p>Ids of all animals requested by this user:</p>";
+
       $result = mysqli_query($mysqli,$sql);
       echo "Saved</br>";
     }
