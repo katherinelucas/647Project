@@ -37,7 +37,7 @@ if ($mysqli->connect_errno)
     }
     else
     {
-      $sql = "INSERT INTO AdoptionRequests (username, id) VALUES ('$username', '$id')";
+      $sql = "INSERT INTO AdoptionRequest (username, id) VALUES ('$username', '$id')";
       echo "<p>$username has requested to adopt animal with the id $id</p>";
 
       echo "<p>Information of animal requested:</p>";
@@ -59,10 +59,9 @@ if ($mysqli->connect_errno)
     	echo "</tr>";
       }
       echo '</table>';
-
-
-      echo "<p>Ids of all animals requested by this user:</p>";
-      $result6 = mysqli_query($mysqli, "SELECT id FROM AdoptionRequests WHERE username='$username'");
+      $result = mysqli_query($mysqli,$sql);
+      echo "<p>Ids of all adoption requests:</p>";
+      $result6 = mysqli_query($mysqli, "SELECT distinct id FROM AdoptionRequest WHERE username='$username'");
       echo '<table border=\"1\">';
       while($row = mysqli_fetch_array($result6))
       {
@@ -72,7 +71,6 @@ if ($mysqli->connect_errno)
       }
       echo '</table>';
 
-      $result = mysqli_query($mysqli,$sql);
     }
   }
   $query = "SELECT username";
