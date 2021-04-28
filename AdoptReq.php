@@ -26,6 +26,8 @@ if ($mysqli->connect_errno)
     $result2 = mysqli_query($mysqli,$query2);
     $query3 = "SELECT id FROM Animals WHERE id='$id'";
     $result3 = mysqli_query($mysqli,$query3);
+    $query7 = "SELECT username FROM AdoptionRequest WHERE id='$id' AND username='$username'";
+    $result7 = mysqli_query($mysqli,$query7);
 
     if($result->num_rows == 0 || $result2->num_rows == 0)
     {
@@ -35,7 +37,7 @@ if ($mysqli->connect_errno)
     {
       echo "Invalid animal id, try again</br>";
     }
-    else
+    else if($result7->num_rows == 0)
     {
       $sql = "INSERT INTO AdoptionRequest (username, id) VALUES ('$username', '$id')";
       echo "<p>$username has requested to adopt animal with the id $id</p>";
@@ -60,7 +62,7 @@ if ($mysqli->connect_errno)
       }
       echo '</table>';
       $result = mysqli_query($mysqli,$sql);
-      echo "<p>Ids of all adoption requests:</p>";
+      echo "<p>Ids of all adoption requests from this user:</p>";
       $result6 = mysqli_query($mysqli, "SELECT distinct id FROM AdoptionRequest WHERE username='$username'");
       echo '<table border=\"1\">';
       while($row = mysqli_fetch_array($result6))
@@ -72,6 +74,21 @@ if ($mysqli->connect_errno)
       echo '</table>';
 
     }
+    else
+    {
+      echo "User already requested this animal id, try again</br>";
+      echo "<p>Ids of all adoption requests from this user:</p>";
+      $result6 = mysqli_query($mysqli, "SELECT distinct id FROM AdoptionRequest WHERE username='$username'");
+      echo '<table border=\"1\">';
+      while($row = mysqli_fetch_array($result6))
+      {
+    	echo "<tr>";
+    	echo "<td>".$row['id']."</td>";
+    	echo "</tr>";
+      }
+      echo '</table>';
+    }
+
   }
   $query = "SELECT username";
   if ($result = $mysqli->query($query))
