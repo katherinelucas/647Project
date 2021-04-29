@@ -71,14 +71,14 @@ if ($mysqli->connect_errno)
     // }
     // echo '</table>';
   }
-  // $query = "SELECT username";
-  // if ($result = $mysqli->query($query))
-  // {
-  //  /* fetch associative array */
-  //  while ($row = $result->fetch_assoc())
-  //  {
-  //    printf ("%s (%s)\n", $row["username"]);
-  //  }
+  $query = "SELECT username";
+  if ($result = $mysqli->query($query))
+  {
+   /* fetch associative array */
+   while ($row = $result->fetch_assoc())
+   {
+     printf ("%s (%s)\n", $row["username"]);
+   }
    /* free result set */
    $result->free();
   }
