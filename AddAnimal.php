@@ -39,7 +39,7 @@ if ($mysqli->connect_errno)
   {
     $sql = "INSERT INTO Animals (id, name, cost, age, species) VALUES ('$id', '$name', '$cost', '$age', '$species')";
     echo "<p>You have requested to intake a $species with the id $id</p>";
-
+    $result = mysqli_query($mysqli,$sql);
     // echo "<p>Information of animal requested:</p>";
     // $result5 = mysqli_query($mysqli, "SELECT * FROM Animals WHERE id='$id'");
     // echo '<table border=\"1\">';
