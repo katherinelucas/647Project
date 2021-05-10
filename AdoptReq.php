@@ -1,5 +1,6 @@
 
 <?php
+session_start();
 error_reporting(E_ALL);
 ini_set("display_errors", 1);
 $mysqli = new mysqli("mysql.eecs.ku.edu", "katielucas", "oghe7yoL",
@@ -10,8 +11,8 @@ if ($mysqli->connect_errno)
  printf("Connect failed: %s\n", $mysqli->connect_error);
  exit();
 }
-  $username = $_POST["username"];
-  $password = $_POST["password"];
+  $username = $_SESSION["username"];
+  $password = $_SESSION["password"];
   $id = $_POST["id"];
 
   if($username=="")

@@ -35,8 +35,7 @@ if ($mysqli->connect_errno)
     {
       $sql = "INSERT INTO User (username, password) VALUES ('$username', '$password')";
       $result = mysqli_query($mysqli,$sql);
-      echo "Saved</br>";
-     
+      echo "New User Saved!</br>Return to http://people.eecs.ku.edu/~j226p732/647Project/login.php to login</br>";
     }
   }
   $query = "SELECT username";
