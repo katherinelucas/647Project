@@ -91,7 +91,7 @@ if ($mysqli->connect_errno)
       }
       echo '</table>';
      echo "<p>All the cats you have requested:</p>";
-      $result10 = mysqli_query($mysqli, "SELECT distinct id FROM AdoptionRequest, Animals WHERE species='cat'");
+      $result10 = mysqli_query($mysqli, "SELECT distinct Animals.id FROM AdoptionRequest, Animals WHERE username='$username' AND species='cat' AND AdoptionRequest.id = Animals.id");
       echo '<table border=\"1\">';
       while($row = mysqli_fetch_array($result10))
       {
@@ -101,9 +101,9 @@ if ($mysqli->connect_errno)
       }
       echo '</table>';
 	     echo "<p>All the dogs you have requested:</p>";
-      $result11 = mysqli_query($mysqli, "SELECT distinct id FROM AdoptionRequest, Animals WHERE Animals.id=AdoptionRequest.id AND Animals.species='dog'");
+      $result11 = mysqli_query($mysqli, "SELECT distinct Animals.id FROM AdoptionRequest, Animals WHERE username='$username' AND species='dog' AND AdoptionRequest.id = Animals.id");
       echo '<table border=\"1\">';
-      while($row = mysqli_fetch_array($result10))
+      while($row = mysqli_fetch_array($result11))
       {
     	echo "<tr>";
     	echo "<td>".$row['id']."</td>";
