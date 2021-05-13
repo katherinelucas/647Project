@@ -72,7 +72,6 @@ if ($mysqli->connect_errno)
       {
     	echo "<tr>";
     	echo "<td>".$row['id']."</td>";
-     echo "<td>".$row['username']."</td>";
     	echo "</tr>";
       }
       echo '</table>';

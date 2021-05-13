@@ -9,11 +9,11 @@ Welcome <?php echo $_SESSION["username"]; ?>. Click here to <a href="logout.php"
   <body>
     <br>
     <a >Look at the animals available for adoption here:</a><br>
-    <a href="Animals.html"></a><a href="http://people.eecs.ku.edu/~k538l772/647/Animals.html" title="Animals">Animals</a><br>
+    <a href="Animals.html"></a><a href="http://people.eecs.ku.edu/~j226p732/647Project/Animals.html" title="Animals">Animals</a><br>
     <a >Make an adoption request here:</a><br>
-    <a href="AdoptReq.html"></a><a href="http://people.eecs.ku.edu/~k538l772/647/AdoptReq.html" title="Adoption Request">Adoption Request</a><br>
+    <a href="AdoptReq.html"></a><a href="http://people.eecs.ku.edu/~j226p732/647Project/AdoptReq.html" title="Adoption Request">Adoption Request</a><br>
     <a >Add an adoptable animal here:</a><br>
-    <a href="AdoptReq.html"></a><a href="http://people.eecs.ku.edu/~k538l772/647/AddAnimal.html" title="Add Animal">Add Animal</a><br>
+    <a href="AdoptReq.html"></a><a href="http://people.eecs.ku.edu/~j226p732/647Project/AddAnimal.html" title="Add Animal">Add Animal</a><br>
 
 <?php
 }else echo "<h1>Please login first .</h1>";
